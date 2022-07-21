@@ -52,15 +52,15 @@ class ApiModel extends Model {
     public function ProductDel(&$param) {
       $sql = "DELETE FROM t_product WHERE id=:id";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->bindValue(":id", $param);
+        $stmt->bindValue(":id", $param['product_id']);
         $stmt->execute();
 
         return $stmt->rowCount();
     }
     public function ProductImgDel(&$param) {
-      $sql = "DELETE FROM t_product_img WHERE product_id=:id";
+        $sql = "DELETE FROM t_product_img WHERE product_id=:product_id";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->bindValue(":id", $param);
+        $stmt->bindValue(":product_id", $param['product_id']);
         $stmt->execute();
 
         return $stmt->rowCount();
@@ -84,6 +84,8 @@ class ApiModel extends Model {
       $stmt->execute();
       return $stmt->fetch(PDO::FETCH_OBJ);
     }
+
+    
     public function productImageInsert(&$param) {
       $sql = "INSERT INTO t_product_img
               SET product_id = :product_id
