@@ -19,7 +19,7 @@ class Controller {
 
         $this->model = $model;
         $view = $this->$action();
-        if(empty($view) && gettype($view) === "string") {
+            if(empty($view) && gettype($view) === "string") {
             echo "Controller 에러 발생";
             exit();
         }
