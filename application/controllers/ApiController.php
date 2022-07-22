@@ -1,4 +1,5 @@
 <?php
+
 namespace application\controllers;
 
 use Exception;
@@ -122,5 +123,11 @@ class ApiController extends Controller
             'product_id' => $productId,
         ];
         $this->model->ProductImgDel($param);
+    }
+    public function productUpdate()
+    {
+        $json = getJson();
+        print_r($json);
+        return [_RESULT => $this->model->productUpdate($json)];
     }
 }
